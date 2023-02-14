@@ -1,0 +1,17 @@
+.song {
+	border: 1px solid black;
+	width: 20vw;
+	padding: 1vw;
+
+	& > p {
+		cursor: pointer;
+		transition: all 200ms;
+
+		&:hover {
+			color: orange;
+		}
+	}
+	& > img {
+		width: 50%;
+	}
+}
