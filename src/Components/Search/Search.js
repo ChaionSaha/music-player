@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import Player from '../Player/Player';
 import SearchedSong from '../SearchedSong/SearchedSong';
 import useSearchSong from '../hooks/useSearchSong';
 import styles from './Search.module.scss';
 
-const Search = () => {
+const Search = ({ setCurrentSong }) => {
 	const { song, inputResult, searchSong, playSong } = useSearchSong();
 	const [input, setInput] = useState('');
 	return (
 		<div>
-			<Player song={song}></Player>
 			<input
 				type='text'
 				placeholder='Search a song'
@@ -23,6 +21,7 @@ const Search = () => {
 						key={result.track.key}
 						song={result}
 						playSong={playSong}
+						setCurrentSong={setCurrentSong}
 					></SearchedSong>
 				))}
 			</div>

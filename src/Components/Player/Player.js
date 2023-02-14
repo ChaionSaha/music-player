@@ -1,19 +1,37 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-const Player = ({ song }) => {
+const Player = ({ currentSong }) => {
+	const options = {
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key':
+				'c8302eabafmshb7fc42660d28305p115909jsn2dd79afa4d6f',
+			'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
+		},
+	};
+	const [song, setSong] = useState({});
+	const sourceRef = useRef();
+
+	useEffect(() => {
+		fetch(
+			`https://shazam.p.rapidapi.com/songs/get-details?key=${currentSong}&locale=en-US`,
+			options
+		)
+			.then((response) => response.json())
+			.then((response) => {
+				setSong(response);
+				sourceRef.current.src = `${response.hub.actions[1].uri}`;
+				console.log(sourceRef.current);
+			});
+	}, [currentSong]);
+
 	return (
 		<div>
 			<h1>This is player.</h1>
 
 			<br />
-			{console.log(song)}
-			{song.hub ? (
-				<audio controls>
-					<source src={song.hub.actions[1].uri}></source>
-				</audio>
-			) : (
-				<div></div>
-			)}
+
+			<audio controls ref={sourceRef}></audio>
 		</div>
 	);
 };

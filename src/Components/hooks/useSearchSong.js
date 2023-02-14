@@ -18,7 +18,7 @@ const useSearchSong = () => {
 		fetch(
 			`https://shazam.p.rapidapi.com/search?term=${encodeURIComponent(
 				input
-			)}&offset=0&limit=5`,
+			)}`,
 			options
 		)
 			.then((res) => res.json())
@@ -36,7 +36,6 @@ const useSearchSong = () => {
 		)
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response);
 				setSong(response);
 			});
 	};
