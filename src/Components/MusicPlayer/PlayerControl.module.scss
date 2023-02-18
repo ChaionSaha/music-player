@@ -1,0 +1,149 @@
+$font-color: #333;
+$font-color-secondary: #4f4f4f;
+$accent-color: #27ae60;
+
+.playerControl {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.header {
+	font-size: 1.3vw;
+	margin-top: 1.1vw;
+	font-weight: 800;
+	text-align: center;
+	margin-bottom: 3vw;
+	color: $font-color;
+}
+
+.img {
+	width: 15.8vw;
+	height: 15.8vw;
+	margin-bottom: 1.1vw;
+
+	& > * {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.title {
+	font-weight: 700;
+	font-size: 1.5vw;
+	color: $font-color;
+	margin-bottom: 0.2vw;
+}
+
+.author {
+	font-weight: 400;
+	font-size: 1.1vw;
+	color: $font-color-secondary;
+	margin-bottom: 1.5vw;
+}
+
+.bar {
+	width: 80%;
+	// border: 1px solid black;
+	margin-bottom: 2vw;
+	height: 0.3vw;
+	background-color: rgba(0, 0, 0, 0.1);
+	position: relative;
+	cursor: pointer;
+}
+
+.line {
+	content: '';
+	position: absolute;
+	width: 0%;
+	height: 100%;
+	background-color: $accent-color;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+}
+
+.circle {
+	content: '';
+	position: absolute;
+	height: 0.7vw;
+	width: 0.7vw;
+	border-radius: 50%;
+	background: $accent-color;
+	top: 50%;
+	left: 0;
+	transform: translate(-50%, -50%);
+}
+
+.playpause {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	margin-bottom: 2vw;
+
+	& > * {
+		&:not(:last-child) {
+			margin-right: 2.52vw;
+		}
+	}
+}
+
+.icon {
+	width: 5.5vw;
+	cursor: pointer;
+	color: $accent-color;
+}
+
+.back,
+.forward {
+	width: 3vw;
+}
+
+.time {
+	display: flex;
+	justify-content: space-between;
+	width: 80%;
+	margin-bottom: 0.7vw;
+}
+
+.volume {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	// border: 1px solid black;
+
+	& > *:not(:last-child) {
+		margin-right: 1vw;
+	}
+}
+
+.volumeIcon {
+	width: 1.5vw;
+	color: $accent-color;
+}
+
+.volumeBar {
+	height: 0.3vw;
+	width: 10vw;
+	appearance: none;
+	border: 1px solid $accent-color;
+	border-radius: 0.3vw;
+	background: linear-gradient($accent-color, $accent-color);
+	background-repeat: no-repeat;
+	transition: all 150ms;
+	cursor: pointer;
+
+	&:hover {
+		height: 0.5vw;
+	}
+}
+
+.volumeBar::-webkit-slider-thumb {
+	appearance: none;
+	height: 0vw;
+	width: 0vw;
+	border-radius: 50%;
+	background-color: $accent-color;
+}

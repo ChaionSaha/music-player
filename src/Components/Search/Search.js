@@ -7,7 +7,7 @@ const Search = ({ setCurrentSong }) => {
 	const { song, inputResult, searchSong, playSong } = useSearchSong();
 	const [input, setInput] = useState('');
 	return (
-		<div>
+		<div className={styles.search}>
 			<input
 				type='text'
 				placeholder='Search a song'

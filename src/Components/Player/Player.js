@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
+import PlayerControl from '../MusicPlayer/PlayerControl';
+import styles from './Player.module.scss';
 
 const Player = ({ currentSong }) => {
 	const options = {
@@ -10,6 +12,9 @@ const Player = ({ currentSong }) => {
 		},
 	};
 	const [song, setSong] = useState({});
+	const [isPlaying, setIsPlaying] = useState(false);
+	const [duration, setDuration] = useState('');
+	const [ct, setCt] = useState('');
 	const sourceRef = useRef();
 
 	useEffect(() => {
@@ -21,17 +26,34 @@ const Player = ({ currentSong }) => {
 			.then((response) => {
 				setSong(response);
 				sourceRef.current.src = `${response.hub.actions[1].uri}`;
-				console.log(sourceRef.current);
 			});
 	}, [currentSong]);
 
+	useEffect(() => {
+		if (isPlaying) sourceRef.current.play();
+		else {
+			sourceRef.current.pause();
+		}
+	}, [isPlaying]);
+
+	const onPlaying = () => {
+		setDuration(sourceRef.current.duration);
+		setCt(sourceRef.current.currentTime);
+	};
+
 	return (
-		<div>
-			<h1>This is player.</h1>
-
-			<br />
-
-			<audio controls ref={sourceRef}></audio>
+		<div className={styles.player}>
+			<audio ref={sourceRef} onTimeUpdate={onPlaying}></audio>
+			{
+				<PlayerControl
+					song={song}
+					isPlaying={isPlaying}
+					setIsPlaying={setIsPlaying}
+					duration={duration}
+					ct={ct}
+					sourceRef={sourceRef}
+				></PlayerControl>
+			}
 		</div>
 	);
 };
