@@ -6,7 +6,7 @@ import {
 	PlayCircleIcon,
 	SpeakerWaveIcon,
 } from '@heroicons/react/24/outline';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './PlayerControl.module.scss';
 
 const PlayerControl = ({
@@ -35,6 +35,12 @@ const PlayerControl = ({
 		sourceRef.current.volume = divprogress;
 		console.log(divprogress, sourceRef.current.volume);
 	};
+
+	useEffect(() => {
+		volumeRef.current.style.backgroundSize = `${JSON.parse(
+			localStorage.getItem('volume')
+		)}% 100%`;
+	}, []);
 
 	return (
 		<div className={styles.playerControl}>
@@ -72,7 +78,7 @@ const PlayerControl = ({
 
 			<div className={styles.bar} ref={seekbarRef} onClick={checkWidth}>
 				<p
-					className={styles.line}
+					className={`${styles.line} `}
 					style={{
 						width: `${ct === 0 ? 0 : (ct / duration) * 100}%`,
 					}}
@@ -84,24 +90,32 @@ const PlayerControl = ({
 			</div>
 			<div className={styles.playpause}>
 				<BackwardIcon
-					className={`${styles.icon} ${styles.back}`}
+					className={`${styles.icon} ${song.key ? '' : styles.blur} ${
+						styles.back
+					}`}
 				></BackwardIcon>
 				<div className={styles.playDiv}>
 					{isPlaying && ct < duration ? (
 						<PauseCircleIcon
-							className={`${styles.icon} ${styles.play}`}
+							className={`${styles.icon} ${
+								song.key ? '' : styles.blur
+							} ${styles.play}`}
 							onClick={() => setIsPlaying(!isPlaying)}
 						></PauseCircleIcon>
 					) : (
 						<PlayCircleIcon
-							className={`${styles.icon} ${styles.play}`}
+							className={`${styles.icon} ${
+								song.key ? '' : styles.blur
+							} ${styles.play}`}
 							onClick={() => setIsPlaying(!isPlaying)}
 						></PlayCircleIcon>
 					)}
 				</div>
 
 				<ForwardIcon
-					className={`${styles.icon} ${styles.forward}`}
+					className={`${styles.icon} ${song.key ? '' : styles.blur} ${
+						styles.forward
+					}`}
 				></ForwardIcon>
 			</div>
 			<div className={styles.volume}>
@@ -112,11 +126,16 @@ const PlayerControl = ({
 					type='range'
 					min='0'
 					max='100'
+					value={JSON.parse(localStorage.getItem('volume'))}
 					className={styles.volumeBar}
 					ref={volumeRef}
 					onChange={(e) => {
-						sourceRef.current.volume = e.target.value / 100;
 						volumeRef.current.style.backgroundSize = `${e.target.value}% 100%`;
+						localStorage.setItem(
+							'volume',
+							JSON.stringify(e.target.value)
+						);
+						sourceRef.current.volume = e.target.value / 100;
 					}}
 				/>
 			</div>

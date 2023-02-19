@@ -26,6 +26,10 @@ const Player = ({ currentSong }) => {
 			.then((response) => {
 				setSong(response);
 				sourceRef.current.src = `${response.hub.actions[1].uri}`;
+				localStorage.setItem(
+					'last-played',
+					JSON.stringify(currentSong)
+				);
 			});
 	}, [currentSong]);
 
@@ -35,6 +39,11 @@ const Player = ({ currentSong }) => {
 			sourceRef.current.pause();
 		}
 	}, [isPlaying]);
+
+	useEffect(() => {
+		sourceRef.current.volume =
+			JSON.parse(localStorage.getItem('volume')) / 100;
+	}, []);
 
 	const onPlaying = () => {
 		setDuration(sourceRef.current.duration);
