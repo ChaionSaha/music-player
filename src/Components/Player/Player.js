@@ -16,6 +16,7 @@ const Player = ({ currentSong }) => {
 	const [duration, setDuration] = useState('');
 	const [ct, setCt] = useState('');
 	const sourceRef = useRef();
+	const playerRef = useRef();
 
 	useEffect(() => {
 		fetch(
@@ -30,6 +31,8 @@ const Player = ({ currentSong }) => {
 					'last-played',
 					JSON.stringify(currentSong)
 				);
+				playerRef.current.style.backgroundImage = `url("${response.images.background}")`;
+				document.title = `${response.title}`;
 			});
 	}, [currentSong]);
 
@@ -52,17 +55,20 @@ const Player = ({ currentSong }) => {
 
 	return (
 		<div className={styles.player}>
-			<audio ref={sourceRef} onTimeUpdate={onPlaying}></audio>
-			{
-				<PlayerControl
-					song={song}
-					isPlaying={isPlaying}
-					setIsPlaying={setIsPlaying}
-					duration={duration}
-					ct={ct}
-					sourceRef={sourceRef}
-				></PlayerControl>
-			}
+			<div className={styles.bgImg} ref={playerRef}></div>
+			<div className={styles.audio}>
+				<audio ref={sourceRef} onTimeUpdate={onPlaying}></audio>
+				{
+					<PlayerControl
+						song={song}
+						isPlaying={isPlaying}
+						setIsPlaying={setIsPlaying}
+						duration={duration}
+						ct={ct}
+						sourceRef={sourceRef}
+					></PlayerControl>
+				}
+			</div>
 		</div>
 	);
 };

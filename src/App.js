@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import './App.scss';
+import styles from './App.module.scss';
 import Player from './Components/Player/Player';
 import Recomendation from './Components/Recomendation/Recomendation';
 import Search from './Components/Search/Search';
 
 function App() {
-	// const { song } = useSearchSong();
 	const [currentSong, setCurrentSong] = useState('');
 
 	useEffect(() => {
@@ -15,8 +14,11 @@ function App() {
 	}, []);
 
 	return (
-		<div className='App'>
-			<Recomendation></Recomendation>
+		<div className={styles.App}>
+			<Recomendation
+				currentSong={currentSong}
+				setCurrentSong={setCurrentSong}
+			></Recomendation>
 			<Player currentSong={currentSong}></Player>
 			<Search setCurrentSong={setCurrentSong}></Search>
 		</div>

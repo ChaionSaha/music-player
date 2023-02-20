@@ -40,7 +40,6 @@ const Search = ({ setCurrentSong }) => {
 				</button>
 			</div>
 
-			{<h1>Found songs: {inputResult.length}</h1>}
 			<div className={styles.songs}>
 				{inputResult.map((result) => (
 					<SearchedSong

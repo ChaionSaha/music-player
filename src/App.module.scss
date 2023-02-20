@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Labrada:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+$accent-color: #27ae60;
+
 *,
 *::after,
 *::before {
@@ -13,14 +15,31 @@
 
 .App {
 	display: flex;
+	flex-direction: row;
 	height: 100vh;
-	// overflow: auto;
-	font-family: 'Labrada', serif;
-	& > div {
-		width: calc(100% / 3);
 
-		&:not(:last-of-type) {
-			border-right: 1px solid rgba(0, 0, 0, 0.1);
+	font-family: 'Labrada', serif;
+	background-color: #282c34;
+	color: white;
+
+	& > div {
+		&:first-of-type {
+			width: 30%;
+		}
+		&:nth-of-type(2) {
+			flex-grow: 1;
+		}
+		&:last-of-type {
+			width: 30%;
 		}
 	}
+}
+
+::-webkit-scrollbar {
+	background-color: transparent;
+	width: 0.3vw;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: $accent-color;
 }

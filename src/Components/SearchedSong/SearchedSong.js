@@ -8,8 +8,11 @@ const SearchedSong = ({ song, setCurrentSong }) => {
 			className={styles.song}
 			onClick={() => setCurrentSong(song.track.key)}
 		>
-			<p>{song.track.title}</p>
 			<img src={song.track.images?.coverart} alt='cover art' />
+			<div className={styles.details}>
+				<p className={styles.title}>{song.track.title}</p>
+				<p className={styles.author}>{song.track.subtitle}</p>
+			</div>
 		</div>
 	);
 };

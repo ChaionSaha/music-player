@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Recomendation = () => {
-	return <div>This is recomendation section</div>;
+const Recomendation = ({ currentSong, setCurrentSong }) => {
+	useEffect(() => {}, [currentSong]);
+	return <div></div>;
 };
 
 export default Recomendation;

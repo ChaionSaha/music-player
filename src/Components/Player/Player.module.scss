@@ -1,3 +1,26 @@
 .player {
-	padding: 0 2vw;
+	position: relative;
+	overflow: hidden;
+}
+
+.bgImg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	z-index: 1;
+
+	filter: blur(10px);
+}
+
+.audio {
+	z-index: 100;
+
+	position: relative;
+	height: 100%;
+	width: 100%;
 }

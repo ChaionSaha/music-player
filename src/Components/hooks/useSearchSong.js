@@ -23,7 +23,6 @@ const useSearchSong = () => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				// console.log(data.tracks.hits);
 				setInputResult(data.tracks.hits);
 			})
 			.catch((err) => console.error(err));

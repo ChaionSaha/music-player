@@ -1,17 +1,37 @@
+$accent-color: aliceblue;
+$secondary-color: #27ae60;
+
 .song {
-	border: 1px solid black;
-	width: 20vw;
+	border: 1px solid transparent;
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
 	padding: 1vw;
+	color: aliceblue;
+	transition: all 200ms;
 
-	& > p {
-		cursor: pointer;
-		transition: all 200ms;
-
-		&:hover {
-			color: orange;
+	&:hover {
+		border-color: $secondary-color;
+		box-shadow: 0 0 10px rgba($secondary-color, $alpha: 0.2);
+		.title {
+			color: $secondary-color;
 		}
 	}
+
 	& > img {
-		width: 50%;
+		width: 15%;
+		margin-right: 0.7vw;
 	}
+}
+
+.title {
+	transition: all 200ms;
+}
+
+.author {
+	color: rgba($color: #fff, $alpha: 0.5);
+}
+
+p {
+	font-size: 1.1vw;
 }
