@@ -5,7 +5,7 @@ import useSearchSong from '../hooks/useSearchSong';
 import styles from './Search.module.scss';
 
 const Search = ({ setCurrentSong }) => {
-	const { song, inputResult, searchSong, playSong } = useSearchSong();
+	const { inputResult, searchSong, playSong } = useSearchSong();
 	const [input, setInput] = useState('');
 	const searchRef = useRef();
 
