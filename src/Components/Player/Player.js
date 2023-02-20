@@ -37,8 +37,9 @@ const Player = ({ currentSong }) => {
 	}, [isPlaying]);
 
 	useEffect(() => {
-		sourceRef.current.volume =
-			JSON.parse(localStorage.getItem('volume')) / 100;
+		sourceRef.current.volume = localStorage.getItem('volume')
+			? JSON.parse(localStorage.getItem('volume')) / 100
+			: 1;
 	}, []);
 
 	const onPlaying = () => {
