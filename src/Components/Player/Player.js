@@ -26,7 +26,7 @@ const Player = ({ currentSong }) => {
 			.then((response) => response.json())
 			.then((response) => {
 				setSong(response);
-				sourceRef.current.src = `${response.hub.actions[1].uri}`;
+				sourceRef.current.src = `${response.hub?.actions[1].uri}`;
 				localStorage.setItem(
 					'last-played',
 					JSON.stringify(currentSong)

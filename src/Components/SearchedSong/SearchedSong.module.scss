@@ -9,6 +9,7 @@ $secondary-color: #27ae60;
 	padding: 1vw;
 	color: aliceblue;
 	transition: all 200ms;
+	cursor: pointer;
 
 	&:hover {
 		border-color: $secondary-color;
