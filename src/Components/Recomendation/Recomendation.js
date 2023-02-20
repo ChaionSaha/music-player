@@ -3,7 +3,13 @@ import options from '../../api.init';
 import RecSong from '../RecSong/RecSong';
 import styles from './Recomendation.module.scss';
 
-const Recomendation = ({ currentSong, setCurrentSong }) => {
+const Recomendation = ({
+	currentSong,
+	setCurrentSong,
+	recRef,
+	seaRef,
+	playRef,
+}) => {
 	const [songs, setSongs] = useState([]);
 
 	useEffect(() => {
@@ -20,14 +26,17 @@ const Recomendation = ({ currentSong, setCurrentSong }) => {
 			.catch((err) => console.log(err));
 	}, [currentSong]);
 	return (
-		<div className={styles.rec}>
-			<h1 className={styles.header}>Recommendation for you</h1>
+		<div className={styles.rec} ref={recRef}>
+			<h1 className={styles.header}>Suggested for you</h1>
 			<div className='songs'>
 				{songs?.map((result) => (
 					<RecSong
 						key={result.key}
 						song={result}
 						setCurrentSong={setCurrentSong}
+						recRef={recRef}
+						playRef={playRef}
+						seaRef={seaRef}
 					></RecSong>
 				))}
 			</div>

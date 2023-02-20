@@ -15,22 +15,32 @@ $accent-color: #27ae60;
 
 .App {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	height: 100vh;
+	overflow: hidden;
 
 	font-family: 'Labrada', serif;
 	background-color: #282c34;
 	color: white;
 
+	position: relative;
+}
+
+.section {
+	display: flex;
+	flex-grow: 1;
+	overflow: auto;
 	& > div {
+		transition: all 200ms;
+		// border: 1px solid green;
 		&:first-of-type {
-			width: 25%;
+			width: 30%;
 		}
 		&:nth-of-type(2) {
 			flex-grow: 1;
 		}
-		&:last-of-type {
-			width: 27%;
+		&:nth-of-type(3) {
+			width: 28%;
 		}
 	}
 }
@@ -42,4 +52,70 @@ $accent-color: #27ae60;
 
 ::-webkit-scrollbar-thumb {
 	background-color: $accent-color;
+}
+
+.active {
+	width: 100%;
+}
+
+.inactive {
+	width: 0%;
+}
+
+.navbar {
+	padding: 2vw;
+	box-sizing: content-box;
+	bottom: 0;
+	width: 100%;
+	height: 50%;
+
+	height: 50px;
+	border: 1px solid black;
+	display: none;
+}
+
+@media only screen and (max-width: 600px) {
+	.App {
+		height: 93vh;
+	}
+	.navbar {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+
+		& > svg {
+			height: 9.5vw;
+			color: rgba(#fff, 0.7);
+		}
+	}
+
+	.section {
+		& > div {
+			&:first-of-type {
+				width: 0%;
+			}
+			&:nth-of-type(2) {
+				width: 100%;
+			}
+			&:nth-of-type(3) {
+				width: 0%;
+			}
+		}
+	}
+}
+
+@media only screen and (width > 601px) {
+	.section {
+		& > div {
+			&:first-of-type {
+				width: 28%;
+			}
+			&:nth-of-type(2) {
+				flex-grow: 1;
+			}
+			&:nth-of-type(3) {
+				width: 28%;
+			}
+		}
+	}
 }

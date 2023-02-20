@@ -1,34 +1,30 @@
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchedSong from '../SearchedSong/SearchedSong';
 import useSearchSong from '../hooks/useSearchSong';
 import styles from './Search.module.scss';
 
-const Search = ({ setCurrentSong }) => {
+const Search = ({ setCurrentSong, seaRef, playRef, recRef }) => {
 	const { inputResult, searchSong, playSong } = useSearchSong();
 	const [input, setInput] = useState('');
-	const searchRef = useRef();
 
 	const handleInfiniteScroll = () => {
 		if (
-			window.innerHeight + searchRef.current.scrollTop + 1 >=
-			searchRef.current.scrollHeight
+			window.innerHeight + seaRef.current.scrollTop + 1 >=
+			seaRef.current.scrollHeight
 		) {
 			console.log('new data should be loaded');
 		}
 	};
 
 	useEffect(() => {
-		searchRef.current.addEventListener('scroll', handleInfiniteScroll);
+		seaRef.current.addEventListener('scroll', handleInfiniteScroll);
 		return () =>
-			searchRef.current.removeEventListener(
-				'scroll',
-				handleInfiniteScroll
-			);
+			seaRef.current.removeEventListener('scroll', handleInfiniteScroll);
 	}, []);
 
 	return (
-		<div className={styles.search} ref={searchRef}>
+		<div className={styles.search} ref={seaRef}>
 			<div className={styles.searchField}>
 				<input
 					type='text'
@@ -47,6 +43,9 @@ const Search = ({ setCurrentSong }) => {
 						song={result}
 						playSong={playSong}
 						setCurrentSong={setCurrentSong}
+						recRef={recRef}
+						playRef={playRef}
+						seaRef={seaRef}
 					></SearchedSong>
 				))}
 			</div>

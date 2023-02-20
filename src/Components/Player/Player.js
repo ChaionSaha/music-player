@@ -3,7 +3,7 @@ import options from '../../api.init';
 import PlayerControl from '../MusicPlayer/PlayerControl';
 import styles from './Player.module.scss';
 
-const Player = ({ currentSong }) => {
+const Player = ({ currentSong, playRef }) => {
 	const [song, setSong] = useState({});
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [duration, setDuration] = useState('');
@@ -48,7 +48,7 @@ const Player = ({ currentSong }) => {
 	};
 
 	return (
-		<div className={styles.player}>
+		<div className={styles.player} ref={playRef}>
 			<div className={styles.bgImg} ref={playerRef}></div>
 			<div className={styles.audio}>
 				<audio ref={sourceRef} onTimeUpdate={onPlaying}></audio>

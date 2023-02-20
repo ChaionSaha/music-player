@@ -159,3 +159,77 @@ $secondary-color: #27ae60;
 	border-radius: 50%;
 	background-color: $accent-color;
 }
+
+@media only screen and (max-width: 600px) {
+	.playerControl {
+		justify-content: flex-start;
+		min-height: 100%;
+		height: fit-content;
+	}
+
+	.header {
+		font-size: 5vw;
+		margin: 5% 0%;
+	}
+	.img {
+		width: 60%;
+		height: fit-content;
+	}
+
+	.title {
+		text-align: center;
+		margin-top: 5%;
+		font-size: 7vw;
+	}
+
+	.author {
+		font-size: 6vw;
+		margin-bottom: 7vw;
+	}
+
+	.time {
+		margin-bottom: 3vw;
+	}
+
+	.ct {
+		font-size: 5vw;
+	}
+
+	.duration {
+		font-size: 5vw;
+	}
+
+	.bar {
+		height: 3.5vw;
+		border-radius: 2vw;
+		margin-bottom: 10vw;
+	}
+
+	.line {
+		height: 3.5vw;
+		border-radius: 2vw;
+	}
+
+	.circle {
+		display: none;
+		height: 5vw;
+		width: 5vw;
+	}
+
+	.playpause {
+		margin-bottom: 5vw;
+		gap: 10vw;
+	}
+
+	.icon {
+		width: 12vw;
+	}
+
+	.play {
+		width: 20vw;
+	}
+
+	.volume {
+		display: none;
+	}
+}
