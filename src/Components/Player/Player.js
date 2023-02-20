@@ -1,16 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import options from '../../api.init';
 import PlayerControl from '../MusicPlayer/PlayerControl';
 import styles from './Player.module.scss';
 
 const Player = ({ currentSong }) => {
-	const options = {
-		method: 'GET',
-		headers: {
-			'X-RapidAPI-Key':
-				'c8302eabafmshb7fc42660d28305p115909jsn2dd79afa4d6f',
-			'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
-		},
-	};
 	const [song, setSong] = useState({});
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [duration, setDuration] = useState('');

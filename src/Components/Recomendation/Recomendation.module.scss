@@ -1,3 +1,17 @@
+$font-color: #333;
+$font-color-secondary: #4f4f4f;
+$accent-color: aliceblue;
+$secondary-color: #27ae60;
+
 .rec {
 	overflow: auto;
+}
+
+.header {
+	font-size: 2vw;
+	margin-left: 1vw;
+	margin-bottom: 1.3vw;
+	-webkit-text-stroke: 1px aliceblue;
+	font-weight: 800;
+	color: transparent;
 }

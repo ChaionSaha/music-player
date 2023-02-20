@@ -1,18 +1,10 @@
 import { useState } from 'react';
+import options from '../../api.init';
 
 const useSearchSong = () => {
 	const [song, setSong] = useState({});
-	// const [input, setInput] = useState('');
-	const [inputResult, setInputResult] = useState([]);
 
-	const options = {
-		method: 'GET',
-		headers: {
-			'X-RapidAPI-Key':
-				'c8302eabafmshb7fc42660d28305p115909jsn2dd79afa4d6f',
-			'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
-		},
-	};
+	const [inputResult, setInputResult] = useState([]);
 
 	const searchSong = (input) => {
 		fetch(

@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import options from '../../api.init';
 import RecSong from '../RecSong/RecSong';
 import styles from './Recomendation.module.scss';
 
 const Recomendation = ({ currentSong, setCurrentSong }) => {
 	const [songs, setSongs] = useState([]);
-	const options = {
-		method: 'GET',
-		headers: {
-			'X-RapidAPI-Key':
-				'c8302eabafmshb7fc42660d28305p115909jsn2dd79afa4d6f',
-			'X-RapidAPI-Host': 'shazam.p.rapidapi.com',
-		},
-	};
+
 	useEffect(() => {
 		fetch(
 			`https://shazam.p.rapidapi.com/songs/list-recommendations?key=${
@@ -27,7 +21,7 @@ const Recomendation = ({ currentSong, setCurrentSong }) => {
 	}, [currentSong]);
 	return (
 		<div className={styles.rec}>
-			{/* <h1>Recommendation for you</h1> */}
+			<h1 className={styles.header}>Recommendation for you</h1>
 			<div className='songs'>
 				{songs?.map((result) => (
 					<RecSong

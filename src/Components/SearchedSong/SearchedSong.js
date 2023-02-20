@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './SearchedSong.module.scss';
 
 const SearchedSong = ({ song, setCurrentSong }) => {
-	// const { playSong } = useSearchSong();
 	return (
 		<div
 			className={styles.song}
