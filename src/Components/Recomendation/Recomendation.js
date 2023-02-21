@@ -28,7 +28,7 @@ const Recomendation = ({
 	return (
 		<div className={styles.rec} ref={recRef}>
 			<h1 className={styles.header}>Suggested for you</h1>
-			<div className='songs'>
+			<div className={styles.songs}>
 				{songs?.map((result) => (
 					<RecSong
 						key={result.key}

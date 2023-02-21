@@ -1,3 +1,4 @@
+import { PlayCircleIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 import styles from './SearchedSong.module.scss';
 
@@ -16,6 +17,9 @@ const SearchedSong = ({ song, setCurrentSong, seaRef, playRef, recRef }) => {
 			<div className={styles.details}>
 				<p className={styles.title}>{song.track.title}</p>
 				<p className={styles.author}>{song.track.subtitle}</p>
+			</div>
+			<div className={styles.playButton}>
+				<PlayCircleIcon></PlayCircleIcon>
 			</div>
 		</div>
 	);
