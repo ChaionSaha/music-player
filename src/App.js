@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
 	MagnifyingGlassIcon,
 	MusicalNoteIcon,
-	SparklesIcon,
+	RadioIcon,
 } from '@heroicons/react/24/outline';
 import styles from './App.module.scss';
 import Player from './Components/Player/Player';
@@ -43,13 +43,13 @@ function App() {
 			</div>
 
 			<div className={styles.navbar}>
-				<SparklesIcon
+				<RadioIcon
 					onClick={(e) => {
 						recRef.current.style.width = '100%';
 						playRef.current.style.width = '0%';
 						searchRef.current.style.width = '0%';
 					}}
-				></SparklesIcon>
+				></RadioIcon>
 				<MusicalNoteIcon
 					onClick={(e) => {
 						recRef.current.style.width = '0%';
